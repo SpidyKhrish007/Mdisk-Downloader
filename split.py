@@ -5,7 +5,7 @@ from math import ceil
 import os
 
 # premium account
-temp_channel = os.environ.get("TEMP_CHAT", "1001662444881")
+temp_channel = os.environ.get("TEMP_CHAT", "-1001662444881")
 try: temp_channel = int(temp_channel)
 except: pass
 ss = os.environ.get("STRING", "")
