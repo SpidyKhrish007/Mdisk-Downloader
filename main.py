@@ -33,11 +33,7 @@ from mdisk import iswin
 # startcommand
 @app.on_message(filters.private & filters.command(["start"]))
 async def start(client,message):
-	old = insert(int(message.chat.id))
-	try:
-	    id = message.text.split(' ')[1]
-	except:
-	    await message.reply_text(text =f"""
+	await message.reply_text(text =f"""
 Hi {message.from_user.first_name } 👋
 I'm Paid Mdisk Uploader Bot 🚀\nPermanent Thumbnail Support💯\n
 Send me a Mdisk link and \nI will upload it to telegram as a file/video.\n
