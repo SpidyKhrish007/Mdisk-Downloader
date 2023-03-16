@@ -60,7 +60,7 @@ async def start(client,message):
 	🌸Daily  Upload  limit Unlimited\n
 	🌸Price Rs 40 🇮🇳/🌎 1$  per Month__
 	
-	💸Pay Using Upi I'd \nultrabots.famc@idfcbank\n
+	💸Pay Using Upi I'd \namitk8270@fbl\n
 	💸Pay Using qr code send /qr command\n
 	💸After Payment Send Screenshots Of\nPayment To Admin
 	""",reply_to_message_id = message.id ,  
@@ -85,7 +85,7 @@ Please /upgrade your subscription
 # qr code
 @app.on_message(filters.private & filters.command(["qr"]))
 async def start(client,message):
-	await message.reply_photo("https://telegra.ph/file/fddcc0ebfc76cb9d05a5f.jpg"),
+	await message.reply_photo("https://ibb.co/FBt9sv2"),
     
     
 @app.on_message(filters.private & filters.command(["about"]))
