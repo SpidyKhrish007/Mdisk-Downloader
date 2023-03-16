@@ -30,33 +30,52 @@ auth = os.environ.get("AUTH", "")
 ban = os.environ.get("BAN", "")
 from mdisk import iswin
 
-# start command
-@app.on_message(filters.command(["start"]))
-def echo(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
+# startcommand
+@app.on_message(filters.private & filters.command(["start"]))
+async def start(client,message):
+	old = insert(int(message.chat.id))
+	try:
+	    id = message.text.split(' ')[1]
+	except:
+	    await message.reply_text(text =f"""
+Hi {message.from_user.first_name } 👋
+I'm Paid Mdisk Uploader Bot 🚀\nPermanent Thumbnail Support💯\n
+Send me a Mdisk link and \nI will upload it to telegram as a file/video.\n
+Please /upgrade Your Subscription
+	""",reply_to_message_id = message.id ,  
+	reply_markup=InlineKeyboardMarkup( [[
+           InlineKeyboardButton("👼 𝙳𝙴𝚅𝚂 👼", url='https://t.me/Aaajats')
+           ],[
+           InlineKeyboardButton('📢 𝚄𝙿𝙳𝙰𝚃𝙴𝚂', url='https://t.me/anumitultrabots'),
+           InlineKeyboardButton('🍂 𝚂𝚄𝙿𝙿𝙾𝚁𝚃', url='https://t.me/anumitultrabots')
+           ],[
+           InlineKeyboardButton('🍃 𝙰𝙱𝙾𝚄𝚃', callback_data='about'),
+           InlineKeyboardButton('ℹ️ Subscribe 🧐', url='https://youtube.com/@anumitultrabots')
+           ]]
+          )
+       )
 
-    if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__', reply_to_message_id=message.id,reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("📦 Source Code", url="https://github.com/bipinkrish/Mdisk-Downloader-Bot")]]))
-        return
-
-    app.send_message(message.chat.id, '**Hi, I am Mdisk Video Downloader, you can watch Videos without MX Player.\n__Send me a link to Start...__**',reply_to_message_id=message.id,
-    reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton("📦 Source Code", url="https://github.com/bipinkrish/Mdisk-Downloader-Bot")]]))
-
-# help command
-@app.on_message(filters.command(["help"]))
-def help(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
+#plans command
+@app.on_message(filters.private & filters.command(["plans"]))
+async def start(client,message):
+	await message.reply_text("""
+	PAID PLANS AVAILABLE\n
+	🛡️ PLAN 🛡️\n
+	🌸Daily  Upload  limit Unlimited
+	🌸Price Rs 40 🇮🇳/🌎 1$  per Month__
+	🌸No Timeout\n
+Please /upgrade your subscription
+	""")
+	
+# qr code
+@app.on_message(filters.private & filters.command(["qr"]))
+async def start(client,message):
+	await message.reply_photo("https://telegra.ph/file/fddcc0ebfc76cb9d05a5f.jpg"),
     
-    if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
-        return
     
-    helpmessage = """__**/start** - basic usage
-**/help** - this message
-**/mdisk mdisklink** - usage
-**/thumb** - reply to a image document of size less than 200KB to set it as Thumbnail ( you can also send image as a photo to set it as Thumbnail automatically )
-**/remove** - remove Thumbnail
-**/show** - show Thumbnail
-**/change** - change upload mode ( default mode is Document )__"""
-    app.send_message(message.chat.id, helpmessage, reply_to_message_id=message.id)
+@app.on_message(filters.private & filters.command(["about"]))
+async def start(client,message):
+	await message.reply_text("📛 My Name : @renamerprov2_bot\n\n👨‍💻Creater :- @ajak4405\n\n🧿 Language :Python 3.10.8\n\n📢 Framework :Pyrogram 2.0.63\n\n🤖 Bot Server : VPS")
 
 
 # check for user access
@@ -213,11 +232,14 @@ def down(message,link):
 
 
 # mdisk command
-@app.on_message(filters.command(["mdisk"]))
+@app.on_message(filters.private & filters.command(["mdisk"]))
 def mdiskdown(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
 
     try:
@@ -233,11 +255,14 @@ def mdiskdown(client: pyrogram.client.Client, message: pyrogram.types.messages_a
 
 
 # thumb command
-@app.on_message(filters.command(["thumb"]))
+@app.on_message(filters.private & filters.command(["thumb"]))
 def thumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
 
     try:
@@ -255,11 +280,14 @@ def thumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
 
 
 # show thumb command
-@app.on_message(filters.command(["show"]))
+@app.on_message(filters.private & filters.command(["show"]))
 def showthumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
     
     if os.path.exists(f'{message.from_user.id}-thumb.jpg'):
@@ -269,11 +297,14 @@ def showthumb(client: pyrogram.client.Client, message: pyrogram.types.messages_a
 
 
 # remove thumbline command
-@app.on_message(filters.command(["remove"]))
+@app.on_message(filters.private & filters.command(["remove"]))
 def removethumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
     
     
@@ -289,7 +320,10 @@ def removethumb(client: pyrogram.client.Client, message: pyrogram.types.messages
 def ptumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
     
     file = app.download_media(message)
@@ -298,11 +332,14 @@ def ptumb(client: pyrogram.client.Client, message: pyrogram.types.messages_and_m
     
 
 # change mode
-@app.on_message(filters.command(["change"]))
+@app.on_message(filters.private & filters.command(["change"]))
 def change(client: pyrogram.client.Client, message: pyrogram.types.messages_and_media.message.Message):
     
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
     
     info = extras.getdata(str(message.from_user.id))
@@ -328,7 +365,10 @@ def mdisktext(client: pyrogram.client.Client, message: pyrogram.types.messages_a
     if isPremmium and message.chat.id == temp_channel: return
 
     if not checkuser(message):
-        app.send_message(message.chat.id, '__You are either not **Authorized** or **Banned**__',reply_to_message_id=message.id)
+        app.send_message(message.chat.id, """
+	Your ARE NOT A PAID USER\n
+Please /upgrade your subscription
+	""",reply_to_message_id=message.id)
         return
 
     if message.text[0] == "/":
