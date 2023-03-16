@@ -51,6 +51,25 @@ Please /upgrade Your Subscription
           )
        )
 
+# upgrade command
+@app.on_message(filters.private & filters.command(["upgrade"]))
+async def start(client,message):
+	await message.reply_text(text =f"""
+	Hello \n
+	🛡️ PLAN 🛡️\n
+	🌸Daily  Upload  limit Unlimited\n
+	🌸Price Rs 40 🇮🇳/🌎 1$  per Month__
+	
+	💸Pay Using Upi I'd \nultrabots.famc@idfcbank\n
+	💸Pay Using qr code send /qr command\n
+	💸After Payment Send Screenshots Of\nPayment To Admin
+	""",reply_to_message_id = message.id ,  
+	reply_markup=InlineKeyboardMarkup([[ 
+        			InlineKeyboardButton("ADMIN 🛂",url = "https://t.me/Aaajats")], 
+        			[InlineKeyboardButton("PayPal 🌎",url = "https://www.paypal.me/ajak4406")],
+		                [InlineKeyboardButton("Cancel",callback_data = "cancel")  ]])
+       )
+	
 #plans command
 @app.on_message(filters.private & filters.command(["plans"]))
 async def start(client,message):
