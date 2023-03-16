@@ -16,17 +16,17 @@ from split import TG_SPLIT_SIZE
 
 
 # app
-bot_token = os.environ.get("TOKEN", "") 
-api_hash = os.environ.get("HASH", "") 
-api_id = os.environ.get("ID", "")
-app = Client("my_bot", api_id=api_id, api_hash=api_hash, bot_token=bot_token)
+bot_token = os.environ.get("TOKEN", "5562266381:AAGY7bhPnRC62qbYegRxnCGSo6eUQPlx_OI") 
+api_hash = os.environ.get("HASH", "ad762fe0516f367115ba651d929cf429") 
+api_id = os.environ.get("ID", "17737898")
+app = Client("my_bot",api_id=api_id, api_hash=api_hash,bot_token=bot_token)
 
 # preiumum
 from split import ss, temp_channel, isPremmium
 if isPremmium: acc = Client("myacc", api_id=api_id, api_hash=api_hash, session_string=ss)
 
 # optionals
-auth = os.environ.get("AUTH", "")
+auth = os.environ.get("AUTH", "623741973,1864861524,5076949930,683684279,306027849,5316294458,5290630238,598394386,5410723702,1303200779,635819536,5135693898,817785442,5020113494,1278611015,5285296040,1335978271,1053140055,1024155122,1667559069,1057959919,1838349598,2083663200,540828579,5072829406,5753750662,910348411,5637860109,5580289036,5069888600,5552151289,5541612283,751366152,5344930478,5715297117,672148918,866545155,1262828639,5749138669,1492398806,5515158923,696401705,981462080,5769418923,1928306010,898811148,5937683464,1222974251,5307413215,1414678142,240296058,1121839250")
 ban = os.environ.get("BAN", "")
 from mdisk import iswin
 
