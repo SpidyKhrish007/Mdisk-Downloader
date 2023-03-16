@@ -58,7 +58,7 @@ async def start(client,message):
 	Hello \n
 	🛡️ PLAN 🛡️\n
 	🌸Daily  Upload  limit Unlimited\n
-	🌸Price Rs 40 🇮🇳/🌎 1$  per Month__
+	🌸Price Rs 40 🇮🇳/🌎 2$  per Month__
 	
 	💸Pay Using Upi I'd \namitk8270@fbl\n
 	💸Pay Using qr code send /qr command\n
